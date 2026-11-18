@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatGPT RTL</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <img src="icon48.png" alt="ChatGPT RTL Logo" class="brand-icon">
+        <div class="brand-text">
+          <h1 class="brand-title">ChatGPT RTL</h1>
+          <span class="brand-badge">v1.6</span>
+        </div>
+      </div>
+      <div class="status-indicator" id="statusIndicator" title="Extension Active">
+        <span class="status-dot"></span>
+        <span class="status-text">Active</span>
+      </div>
+    </header>
+
+    <!-- Settings Card -->
+    <section class="card settings-card">
+      <h2 class="section-title">Preferences</h2>
+
+      <div class="setting-item">
+        <div class="setting-info">
+          <span class="setting-label">Auto-detect responses</span>
+          <span class="setting-desc">Auto-align replies by majority language</span>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggleAutoResponse" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-item">
+        <div class="setting-info">
+          <span class="setting-label">Auto-detect input</span>
+          <span class="setting-desc">Align prompt textarea as you type</span>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggleAutoInput" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-item">
+        <div class="setting-info">
+          <span class="setting-label">Keep Code & Math LTR</span>
+          <span class="setting-desc">Isolate formulas, equations and code blocks</span>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggleForceCodeMath" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="setting-item">
+        <div class="setting-info">
+          <span class="setting-label">Vazirmatn font</span>
+          <span class="setting-desc">Use Vazirmatn for ChatGPT text</span>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggleVazirmatn">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Keyboard Shortcuts Card -->
+    <section class="card shortcuts-card">
+      <h2 class="section-title">Keyboard Shortcuts</h2>
+      <ul class="shortcuts-list">
+        <li class="shortcut-item">
+          <span class="shortcut-desc">Switch to RTL</span>
+          <div class="keys">
+            <kbd>Ctrl</kbd>+<kbd>Right Shift</kbd>
+          </div>
+        </li>
+        <li class="shortcut-item">
+          <span class="shortcut-desc">Switch to LTR</span>
+          <div class="keys">
+            <kbd>Ctrl</kbd>+<kbd>Left Shift</kbd>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>Made by Amir Hossein Kamandlou</span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

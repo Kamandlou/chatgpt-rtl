@@ -1,0 +1,410 @@
+/* Optional Vazirmatn font for ChatGPT conversation text and composer. */
+html.chatgpt-vazirmatn-enabled :is(
+  [data-message-author-role], .markdown, .prose, #prompt-textarea, .ProseMirror
+):not(:is(pre, code, .katex, .MathJax)),
+html.chatgpt-vazirmatn-enabled :is(
+  [data-message-author-role], .markdown, .prose, #prompt-textarea, .ProseMirror
+) *:not(:is(pre, pre *, code, code *, .cm-editor, .cm-editor *,
+  .katex, .katex *, .MathJax, .MathJax *, math, math *,
+  button, button *, svg, svg *)) {
+  font-family: "ChatGPT RTL Vazirmatn", sans-serif !important;
+}
+
+/* ==========================================================================
+   ChatGPT RTL - Core Styling
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Math Isolation (KaTeX / MathJax / LaTeX)
+   -------------------------------------------------------------------------- */
+.katex,
+.katex-html,
+span.katex,
+.MathJax,
+math,
+[class*="math-"],
+[data-d-component="math"],
+.Math-C48SKy {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: isolate !important;
+  display: inline-flex !important;
+  vertical-align: baseline !important;
+}
+
+.katex-display,
+.MathJax_Display {
+  display: block !important;
+  margin: 0.75em 0 !important;
+  text-align: center !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. Code Blocks & Syntax Isolation
+   -------------------------------------------------------------------------- */
+pre,
+pre code,
+.hljs,
+[data-code-block="true"],
+div[class*="CodeBlock"],
+div[class*="code-block"],
+div[class*="CodeSurface"],
+.cm-editor,
+.cm-scroller,
+div[class*="syntaxhighlighter"],
+[data-testid*="code"],
+pre[class*="language-"] {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: isolate !important;
+}
+
+/* Code block header bar (language tag + copy button) remains strictly LTR */
+pre .flex.items-center.justify-between,
+div[class*="code-block"] > div:first-child,
+div[class*="code-block-header"],
+div[class*="ActionBar"] {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* Inline code tags inside RTL text */
+.chatgpt-rtl code:not(pre code):not([data-code-block] code):not(.cm-editor code),
+[dir="rtl"] code:not(pre code):not([data-code-block] code):not(.cm-editor code),
+[dir="rtl"] [data-d-component="code"],
+code[data-d-component="code"],
+code.Code-kbs71c {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+  display: inline-block;
+  padding: 0.1em 0.3em;
+  vertical-align: baseline;
+}
+
+/* --------------------------------------------------------------------------
+   3. RTL Text Alignment & Bidirectional Formatting
+   -------------------------------------------------------------------------- */
+.chatgpt-rtl,
+[dir="rtl"].chatgpt-block-rtl,
+p[dir="rtl"],
+[dir="rtl"] p,
+[dir="rtl"] [data-d-component="text"],
+[data-d-component="text"][dir="rtl"],
+.TextBase-hXhSqg[dir="rtl"],
+[dir="rtl"].TextBase-hXhSqg {
+  direction: rtl !important;
+  text-align: right !important;
+  unicode-bidi: embed !important;
+}
+
+.chatgpt-ltr,
+[dir="ltr"].chatgpt-block-ltr {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: embed !important;
+}
+
+/* RTL Lists Formatting (Fix bullet points and numbers positioning) */
+ol.chatgpt-rtl, ul.chatgpt-rtl,
+ol[dir="rtl"], ul[dir="rtl"],
+[data-d-component="list"][dir="rtl"],
+ul.List-rH8nmc[dir="rtl"],
+ol.List-rH8nmc[dir="rtl"],
+.chatgpt-rtl ul,
+.chatgpt-rtl ol,
+[dir="rtl"] ul,
+[dir="rtl"] ol,
+.prose ol[dir="rtl"], .prose ul[dir="rtl"] {
+  direction: rtl !important;
+  text-align: right !important;
+  padding-right: 1.75rem !important;
+  padding-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+ul.chatgpt-rtl > li,
+ol.chatgpt-rtl > li,
+.chatgpt-rtl li,
+[dir="rtl"] li,
+[data-d-component="list-item"][dir="rtl"],
+li.Item-O8JWQe[dir="rtl"],
+[dir="rtl"] [data-d-list-item-content],
+.prose li[dir="rtl"] {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* User Message Bubbles */
+[data-user-message-bubble="true"].chatgpt-rtl,
+[data-user-message-bubble="true"][dir="rtl"],
+[data-user-message-bubble="true"].chatgpt-rtl.text-start,
+[data-user-message-bubble="true"][dir="rtl"].text-start,
+[data-message-author-role="user"].chatgpt-rtl,
+[data-message-author-role="user"][dir="rtl"] {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+[data-user-message-bubble="true"].chatgpt-rtl .whitespace-pre-wrap,
+[data-user-message-bubble="true"][dir="rtl"] .whitespace-pre-wrap,
+[data-user-message-bubble="true"] .whitespace-pre-wrap[dir="rtl"],
+[data-user-message-bubble="true"] .whitespace-pre-wrap.chatgpt-block-rtl,
+[data-user-message-bubble="true"].chatgpt-rtl .text-start,
+[data-user-message-bubble="true"][dir="rtl"] .text-start,
+[data-message-author-role="user"].chatgpt-rtl .whitespace-pre-wrap,
+[data-message-author-role="user"][dir="rtl"] .whitespace-pre-wrap,
+[data-message-author-role="user"] .whitespace-pre-wrap[dir="rtl"],
+[data-message-author-role="user"] .whitespace-pre-wrap.chatgpt-block-rtl,
+div.whitespace-pre-wrap.chatgpt-block-rtl,
+div.whitespace-pre-wrap[dir="rtl"] {
+  direction: rtl !important;
+  text-align: right !important;
+  unicode-bidi: embed !important;
+}
+
+[data-user-message-bubble="true"].chatgpt-ltr,
+[data-user-message-bubble="true"][dir="ltr"],
+[data-message-author-role="user"].chatgpt-ltr,
+[data-message-author-role="user"][dir="ltr"] {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+[data-user-message-bubble="true"].chatgpt-ltr .whitespace-pre-wrap,
+[data-user-message-bubble="true"][dir="ltr"] .whitespace-pre-wrap,
+[data-user-message-bubble="true"] .whitespace-pre-wrap[dir="ltr"],
+[data-user-message-bubble="true"] .whitespace-pre-wrap.chatgpt-block-ltr,
+[data-message-author-role="user"].chatgpt-ltr .whitespace-pre-wrap,
+[data-message-author-role="user"][dir="ltr"] .whitespace-pre-wrap,
+[data-message-author-role="user"] .whitespace-pre-wrap[dir="ltr"],
+[data-message-author-role="user"] .whitespace-pre-wrap.chatgpt-block-ltr,
+div.whitespace-pre-wrap.chatgpt-block-ltr,
+div.whitespace-pre-wrap[dir="ltr"] {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: embed !important;
+}
+
+/* RTL Blockquotes */
+blockquote.chatgpt-rtl,
+.chatgpt-rtl blockquote,
+[dir="rtl"] blockquote {
+  direction: rtl !important;
+  text-align: right !important;
+  border-right-width: 4px !important;
+  border-left-width: 0 !important;
+  padding-right: 1rem !important;
+  padding-left: 0 !important;
+}
+
+/* Tables in RTL responses */
+table.chatgpt-rtl,
+table[dir="rtl"],
+[data-d-component="table"][dir="rtl"],
+.chatgpt-rtl table,
+[dir="rtl"] table {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+table.chatgpt-rtl th,
+table.chatgpt-rtl td,
+table[dir="rtl"] th,
+table[dir="rtl"] td,
+[data-d-component="table"][dir="rtl"] th,
+[data-d-component="table"][dir="rtl"] td,
+.chatgpt-rtl table th,
+.chatgpt-rtl table td,
+[dir="rtl"] table th,
+[dir="rtl"] table td,
+table.chatgpt-rtl th *,
+table.chatgpt-rtl td *,
+table[dir="rtl"] th *,
+table[dir="rtl"] td *,
+[data-d-component="table"][dir="rtl"] th *,
+[data-d-component="table"][dir="rtl"] td *,
+.chatgpt-rtl table th *,
+.chatgpt-rtl table td *,
+[dir="rtl"] table th *,
+[dir="rtl"] table td * {
+  direction: rtl !important;
+  text-align: right !important;
+  text-align: -webkit-right !important;
+  justify-content: flex-start !important;
+}
+
+/* Explicitly override Tailwind typography & alignment utilities inside RTL tables */
+table.chatgpt-rtl th.text-left,
+table.chatgpt-rtl td.text-left,
+table[dir="rtl"] th.text-left,
+table[dir="rtl"] td.text-left,
+table.chatgpt-rtl th.text-start,
+table.chatgpt-rtl td.text-start,
+table[dir="rtl"] th.text-start,
+table[dir="rtl"] td.text-start,
+table.chatgpt-rtl [class*="text-left"],
+table[dir="rtl"] [class*="text-left"],
+table.chatgpt-rtl [class*="text-start"],
+table[dir="rtl"] [class*="text-start"],
+table.chatgpt-rtl [dir="ltr"]:not(pre):not(code):not(.katex):not(.MathJax),
+table[dir="rtl"] [dir="ltr"]:not(pre):not(code):not(.katex):not(.MathJax) {
+  direction: rtl !important;
+  text-align: right !important;
+  text-align: -webkit-right !important;
+  justify-content: flex-start !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. Input Area (Prompt Textarea & ProseMirror)
+   -------------------------------------------------------------------------- */
+#prompt-textarea.chatgpt-rtl,
+#prompt-textarea[dir="rtl"],
+.ProseMirror.chatgpt-rtl {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+#prompt-textarea.chatgpt-rtl p,
+#prompt-textarea[dir="rtl"] p,
+.ProseMirror.chatgpt-rtl p {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* Placeholder alignment when RTL */
+#prompt-textarea.chatgpt-rtl .placeholder,
+#prompt-textarea.chatgpt-rtl::before,
+#prompt-textarea.chatgpt-rtl p[data-placeholder]::before {
+  direction: rtl !important;
+  text-align: right !important;
+  right: 0 !important;
+  left: auto !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. Injected Buttons (Composer & Message Turn Actions)
+   -------------------------------------------------------------------------- */
+/* Composer RTL Toggle Button */
+.chatgpt-rtl-composer-btn,
+button#chatgpt-rtl-composer-toggle,
+button.chatgpt-rtl-composer-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 32px !important;
+  min-width: 32px !important;
+  max-width: 32px !important;
+  height: 32px !important;
+  min-height: 32px !important;
+  max-height: 32px !important;
+  padding: 0 !important;
+  margin: 0 4px !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  cursor: pointer !important;
+  color: currentColor !important;
+  opacity: 0.75 !important;
+  flex: 0 0 32px !important;
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
+  align-self: center !important;
+  transition: opacity 0.15s ease, background-color 0.15s ease, color 0.15s ease !important;
+  user-select: none !important;
+  box-sizing: border-box !important;
+  line-height: 1 !important;
+}
+
+.chatgpt-rtl-composer-btn:hover,
+button#chatgpt-rtl-composer-toggle:hover {
+  opacity: 1 !important;
+  background-color: rgba(128, 128, 128, 0.15) !important;
+}
+
+.chatgpt-rtl-composer-btn.active,
+button#chatgpt-rtl-composer-toggle.active {
+  opacity: 1 !important;
+  color: #10a37f !important; /* OpenAI green accent */
+  background-color: rgba(16, 163, 127, 0.12) !important;
+}
+
+.chatgpt-rtl-composer-btn svg,
+button#chatgpt-rtl-composer-toggle svg {
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+  max-width: 18px !important;
+  max-height: 18px !important;
+  stroke: currentColor !important;
+  stroke-width: 2 !important;
+  display: block !important;
+  transition: transform 0.2s ease !important;
+}
+
+.chatgpt-rtl-composer-btn.is-rtl svg,
+button#chatgpt-rtl-composer-toggle.is-rtl svg {
+  transform: scaleX(-1) !important;
+}
+
+/* Message Action Turn RTL Button */
+.chatgpt-rtl-turn-btn,
+button.chatgpt-rtl-turn-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 28px !important;
+  min-width: 28px !important;
+  max-width: 28px !important;
+  height: 28px !important;
+  min-height: 28px !important;
+  max-height: 28px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 8px !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  color: inherit !important;
+  opacity: 0.7 !important;
+  flex: 0 0 28px !important;
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
+  transition: opacity 0.15s ease, background-color 0.15s ease !important;
+  user-select: none !important;
+  box-sizing: border-box !important;
+}
+
+.chatgpt-rtl-turn-btn:hover,
+button.chatgpt-rtl-turn-btn:hover {
+  opacity: 1 !important;
+  background-color: rgba(128, 128, 128, 0.15) !important;
+}
+
+.chatgpt-rtl-turn-btn.is-rtl,
+button.chatgpt-rtl-turn-btn.is-rtl {
+  opacity: 1 !important;
+  color: #10a37f !important;
+}
+
+.chatgpt-rtl-turn-btn svg,
+button.chatgpt-rtl-turn-btn svg {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  display: block !important;
+  transition: transform 0.2s ease !important;
+}
+
+.chatgpt-rtl-turn-btn.is-rtl svg,
+button.chatgpt-rtl-turn-btn.is-rtl svg {
+  transform: scaleX(-1) !important;
+}
