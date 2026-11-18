@@ -29,10 +29,6 @@ A Chrome and Firefox extension for right-to-left text in [ChatGPT](https://chatg
 
 Temporary add-ons are removed when Firefox closes. For permanent installation, use the signed add-on from Firefox Add-ons after publication.
 
-## Publish to Firefox Add-ons
-
-Run `npx --yes --package web-ext web-ext build --source-dir . --artifacts-dir dist --overwrite-dest`, then upload the generated ZIP to [addons.mozilla.org/developers](https://addons.mozilla.org/developers/). Firefox requires review and signing before public installation. The extension declares that it does not collect or transmit user data. Keep the Firefox add-on ID in `manifest.json` unchanged for future updates.
-
 ## Credits
 
 Maintained by Amir Hossein Kamandlou. Based on the original ChatGPT RTL extension by Roy Damari. The existing copyright notice for Eric Liang is retained in [LICENSE](LICENSE).
