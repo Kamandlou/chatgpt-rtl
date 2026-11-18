@@ -469,11 +469,21 @@
   // ---------------------------------------------------------------------------
   // 5. Message Turn Manual Toggle Button
   // ---------------------------------------------------------------------------
-  const TURN_BUTTON_SVG = `
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M4 6h16M4 12h10M4 18h16" />
-    </svg>
-  `;
+  function createDirectionIcon(paths) {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '2');
+    svg.setAttribute('stroke-linecap', 'round');
+    svg.setAttribute('stroke-linejoin', 'round');
+    paths.forEach((d) => {
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', d);
+      svg.appendChild(path);
+    });
+    return svg;
+  }
 
   function createTurnToggleButton(targetEl) {
     const btn = document.createElement('button');
@@ -481,7 +491,7 @@
     btn.className = 'chatgpt-rtl-turn-btn';
     btn.setAttribute('aria-label', 'Toggle RTL/LTR direction');
     btn.setAttribute('title', 'Toggle RTL/LTR direction for this message');
-    btn.innerHTML = TURN_BUTTON_SVG;
+    btn.appendChild(createDirectionIcon(['M4 6h16M4 12h10M4 18h16']));
 
     const isCurrentlyRtl = targetEl.getAttribute('dir') === 'rtl' || targetEl.classList.contains('chatgpt-rtl');
     if (isCurrentlyRtl) {
@@ -680,12 +690,6 @@
   // ---------------------------------------------------------------------------
   // 6. Composer Input Direction (Auto-detect & Manual Override)
   // ---------------------------------------------------------------------------
-  const COMPOSER_RTL_SVG = `
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M4 6h16M10 12h10M4 18h16" />
-      <path d="M7 9l-3 3 3 3" />
-    </svg>
-  `;
 
   function getPromptInput() {
     return document.getElementById('prompt-textarea') || document.querySelector('.ProseMirror[contenteditable="true"]');
@@ -786,7 +790,7 @@
     btn.style.flex = '0 0 32px';
     btn.style.background = 'transparent';
     btn.style.border = 'none';
-    btn.innerHTML = COMPOSER_RTL_SVG;
+    btn.appendChild(createDirectionIcon(['M4 6h16M10 12h10M4 18h16', 'M7 9l-3 3 3 3']));
 
     btn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -890,5 +894,5 @@
   // Initial trigger
   scheduleBatchProcessing();
 
-  console.info('ChatGPT RTL v1.6.1 initialized successfully.');
+  console.info('ChatGPT RTL v1.7.0 initialized successfully.');
 })();

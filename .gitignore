@@ -1,3 +1,6 @@
 # Chrome Web Store package metadata is tied to the original signed build.
 _metadata/
 .DS_Store
+
+# Local Firefox Add-ons upload packages.
+dist/
