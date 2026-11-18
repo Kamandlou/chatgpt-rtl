@@ -890,5 +890,5 @@
   // Initial trigger
   scheduleBatchProcessing();
 
-  console.info('ChatGPT RTL v1.6 initialized successfully.');
+  console.info('ChatGPT RTL v1.6.1 initialized successfully.');
 })();

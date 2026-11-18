@@ -1,9 +1,19 @@
-/* Optional Vazirmatn font for ChatGPT conversation text and composer. */
+/* Optional Vazirmatn font for conversation turns and the composer. */
 html.chatgpt-vazirmatn-enabled :is(
-  [data-message-author-role], .markdown, .prose, #prompt-textarea, .ProseMirror
-):not(:is(pre, code, .katex, .MathJax)),
+  [data-testid^="conversation-turn-"], [data-message-author-role],
+  [data-user-message-bubble="true"], [data-markdown-text-style="assistant-message"],
+  [class*="DilResponseRoot"], [class*="DilRenderer"], [class*="MarkdownRoot"],
+  [data-d-component="text"], .markdown, .prose, .whitespace-pre-wrap,
+  #prompt-textarea, .ProseMirror
+):not(:is(pre, pre *, code, code *, .cm-editor, .cm-editor *,
+  .katex, .katex *, .MathJax, .MathJax *, math, math *,
+  button, button *, svg, svg *)),
 html.chatgpt-vazirmatn-enabled :is(
-  [data-message-author-role], .markdown, .prose, #prompt-textarea, .ProseMirror
+  [data-testid^="conversation-turn-"], [data-message-author-role],
+  [data-user-message-bubble="true"], [data-markdown-text-style="assistant-message"],
+  [class*="DilResponseRoot"], [class*="DilRenderer"], [class*="MarkdownRoot"],
+  [data-d-component="text"], .markdown, .prose, .whitespace-pre-wrap,
+  #prompt-textarea, .ProseMirror
 ) *:not(:is(pre, pre *, code, code *, .cm-editor, .cm-editor *,
   .katex, .katex *, .MathJax, .MathJax *, math, math *,
   button, button *, svg, svg *)) {
